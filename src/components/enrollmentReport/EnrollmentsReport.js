@@ -1,70 +1,60 @@
-import React, { useState, useEffect } from "react";
-import "./enrollmentsReport.css";
-import {
-    RadioButtonGroup,
-    CheckboxGroup,
-    DatePicker,
-    Spinner,
-} from "react-rainbow-components";
-import StackedChart from "../chart/StackedChart";
-import NivoChart from "../chart/Nivochart";
-import { options } from "../chart/chartOption";
-import { getEnrollments } from "../../repo/repoEnrollments";
-import Card from "../UI/Card";
-//import TransformFile from './transformFile';
+import React, { useState, useEffect } from 'react';
+import './enrollmentsReport.css';
+import { RadioButtonGroup, CheckboxGroup, DatePicker, Spinner } from 'react-rainbow-components';
+import StackedChart from '../chart/StackedChart';
+import NivoChart from '../chart/Nivochart';
+import { options } from '../chart/chartOption';
+import { getEnrollments } from '../../repo/repoEnrollments';
+import Card from '../UI/Card';
 
 const optionsCheckBox = [
-    { value: "paid", label: "Pagos", disabled: false },
-    { value: "free", label: "Gratis", disabled: false },
-    { value: "trial", label: "Prueba", disabled: false },
-    { value: "subscription", label: "Subscripcion", disabled: false },
+    { value: 'paid', label: 'Pagos', disabled: false },
+    { value: 'free', label: 'Gratis', disabled: false },
+    { value: 'trial', label: 'Prueba', disabled: false },
+    { value: 'subscription', label: 'Subscripcion', disabled: false },
 ];
 
 const EnrollmentsReport = () => {
-    const [enrollments, setEnrollments] = useState([]);
-    const [date, setDate] = useState({ range: undefined });
-    const [period, setPeriod] = useState({ value: "daily" });
-    const [totalAmount, settotalAmount] = useState();
-    const [nivodata, setNivodata] = useState();
-    const [rotate, setRotate] = useState();
-    const [changed, setChanged] = useState(true);
-    const [prueba, setPrueba] = useState(true);
-    const [isLoading, setIsloading] = useState(false);
-
-    const [values, setValues] = useState([
-        "paid",
-        "free",
-        "subscription",
-        "trial",
-    ]);
+    const [state, setState] = useState({
+        enrollments: [],
+        totalAmount: 0,
+        nivoData: [],
+        rotate: 0,
+        period: { value: 'daily' },
+        isLoading: true,
+        values: ['paid', 'free', 'subscription', 'trial'],
+        date: { range: undefined },
+    });
 
     const changeCheckboxHandler = (newValues) => {
-        setValues(newValues);
+        setState((currentState) => ({ ...currentState, values: newValues }));
     };
-    const changeDateHandler = (newValues) => {
-        setDate({ range: newValues });
+
+    const changeDateHandler = (newRanges) => {
+        setState((currentState) => ({ ...currentState, range: newRanges }));
     };
-    const rename = (e) => {
-        setPeriod({ value: e.target.value });
+
+    const rename = ({ target: { value } }) => {
+        setState((currentState) => ({ ...currentState, period: { value } }));
     };
 
     useEffect(() => {
-        setIsloading(true);
-        const getenrollmentsType = async () => {
-            const enrollmentsType = await getEnrollments(period, values);
-            setEnrollments(enrollmentsType[0]);
-            settotalAmount(enrollmentsType[1]);
-            setNivodata(enrollmentsType[2]);
-            setRotate(enrollmentsType[3]);
-            setPrueba(enrollmentsType);
+        setState((currentState) => ({ ...currentState, isLoading: true }));
+        const getEnrollmentsType = async () => {
+            const enrollmentsType = await getEnrollments(state.period, state.values);
+            const [enrollments, totalAmount, nivoData, rotate] = enrollmentsType;
 
-            setIsloading(false);
-            console.log("renderizando");
+            setState((currentState) => ({
+                ...currentState,
+                enrollments,
+                totalAmount,
+                nivoData,
+                rotate,
+                isLoading: false,
+            }));
         };
-        getenrollmentsType();
-    }, [period, values]);
-
-    // console.log(Periods);
+        getEnrollmentsType();
+    }, [state.period, state.values]);
 
     return (
         <div className="enrollmentsReport">
@@ -72,7 +62,7 @@ const EnrollmentsReport = () => {
                 <CheckboxGroup
                     id="checkbox-group-1"
                     options={optionsCheckBox}
-                    value={values}
+                    value={state.values}
                     onChange={changeCheckboxHandler}
                     label="seleecione los tipos"
                     orientation="horizontal"
@@ -85,26 +75,19 @@ const EnrollmentsReport = () => {
                 selectionType="range"
                 formatStyle="large"
                 variant="single"
-                value={date.range}
+                value={state.date.range}
                 onChange={changeDateHandler}
             />
             <div className="rainbow-p-around_x-large rainbow-align-content_center">
-                <RadioButtonGroup
-                    id="radio-button-group-component-1"
-                    options={options}
-                    value={period.value}
-                    onChange={rename}
-                />
-                {console.log(prueba)}
+                <RadioButtonGroup id="radio-button-group-component-1" options={options} value={state.period.value} onChange={rename} />
             </div>
             <div className="NivoChart">
-                <Card>Total:{totalAmount}</Card>
-                {isLoading ? (
+                <Card>Total:{state.totalAmount}</Card>
+                {state.isLoading ? (
                     <Spinner size="large" type="arc" variant="brand" />
                 ) : (
-                    <StackedChart values={enrollments} rotate={rotate} />
+                    <StackedChart values={state.enrollments} rotate={state.rotate} />
                 )}
-                {/* <NivoChart values={nivodata} /> */}
             </div>
         </div>
     );
