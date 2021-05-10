@@ -1,0 +1,47 @@
+{
+    "data": [
+        {
+            "current_date": "2021-03-01",
+            "total_enrollments": 20,
+            "types": {
+                "paid": 2,
+                "free": 4,
+                "trial": 1,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-03-02",
+            "total_enrollments": 1,
+            "types": {
+                "paid": 1,
+                "free": 10,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-03-03",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 1,
+                "free": 2,
+                "trial": 0,
+                "subscription": 1
+            }
+        },
+
+        {
+            "current_date": "2021-03-04",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 1,
+                "free": 2,
+                "trial": 0,
+                "subscription": 1
+            }
+        }
+    ],
+    "type": "daily",
+    "total_amount": 150
+}

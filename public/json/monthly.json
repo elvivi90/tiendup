@@ -1,0 +1,87 @@
+{
+    "data": [
+        {
+            "current_date": "2021-03-01",
+            "total_enrollments": 20,
+            "types": {
+                "paid": 3,
+                "free": 4,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-04-01",
+            "total_enrollments": 1,
+            "types": {
+                "paid": 3,
+                "free": 10,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-05-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+
+        {
+            "current_date": "2021-06-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-07-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-08-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-09-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        },
+        {
+            "current_date": "2021-10-01",
+            "total_enrollments": 4,
+            "types": {
+                "paid": 3,
+                "free": 2,
+                "trial": 2,
+                "subscription": 1
+            }
+        }
+    ],
+    "type": "monthly",
+    "total_amount": 125
+}

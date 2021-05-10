@@ -1,0 +1,23 @@
+.enrollmentsReport {
+    box-sizing: 30%;
+    width: 30%;
+    align-content: center;
+    height: 500px;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+    .enrollmentsReport {
+        animation: App-logo-spin infinite 1s alternate;
+    }
+} */
+
+.card {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.NivoChart {
+    height: 700px;
+    width: 700px;
+}
