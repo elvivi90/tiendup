@@ -39,7 +39,7 @@
 .circle {
     width: 100px;
     height: 100px;
-    background: rgba(233, 30, 99);
+    background: rgb(30, 233, 98);
     border-radius: 50%;
 }
 
