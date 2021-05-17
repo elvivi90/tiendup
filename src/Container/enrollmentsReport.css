@@ -1,0 +1,83 @@
+.enrollmentsReport {
+    box-sizing: 30%;
+    width: 30%;
+    align-content: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+    .enrollmentsReport {
+        animation: App-logo-spin infinite 1s alternate;
+    }
+} */
+
+.card {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.NivoChart {
+    height: 700px;
+    width: 700px;
+}
+.logoContainer {
+    position: 10%;
+}
+.logo {
+    height: 100px;
+    width: 100px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    transform: translate(-30%, -30%);
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background: rgba(233, 30, 99);
+    border-radius: 50%;
+}
+
+.line {
+    position: relative;
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 6px;
+    height: 60px;
+    width: 200px;
+}
+.line:before {
+    content: "";
+    position: absolute;
+    top: -70%;
+    bottom: 100%;
+    left: 0%;
+    height: 5%;
+    width: 50px;
+    background: white;
+    transform: skew(0deg, -13deg);
+}
+.line:after {
+    content: "";
+    position: absolute;
+    top: -70%;
+    right: 55%;
+    height: 5%;
+    width: 50px;
+    background: white;
+    transform: skew(0deg, 13deg);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}

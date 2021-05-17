@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import EnrollmentReport from "./components/enrollmentReport/EnrollmentsReport";
+import EnrollmentReport from "./Container/EnrollmentsReport";
 import NivoChart from "./components/chart/Nivochart";
 //import {VictoryChart, VictoryStack, VictoryAxis, VictoryBar} from 'victory';
 //import Datos from './json/datos.json';
